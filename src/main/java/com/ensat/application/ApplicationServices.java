@@ -25,4 +25,9 @@ public class ApplicationServices implements IApplicationServices {
 		return DTOAssembler.CreateUsers(userService.listAllUsers());
 	}
 
+	@Override
+	public ProfileDTO getUserProfileByUserId(int userId) {
+		return DTOAssembler.CreateProfile(userService.getUserProfileByUserId(userId));
+	}
+
 }

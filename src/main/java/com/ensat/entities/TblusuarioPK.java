@@ -15,8 +15,8 @@ public class TblusuarioPK implements Serializable {
 	@Column(name="codigo_usuario")
 	private int codigoUsuario;
 
-	@Column(insertable=false, updatable=false)
-	private int idRol;
+/*	@Column(name="fk_idrol", insertable=false, updatable=false)
+	private int idRol;*/
 
 	public TblusuarioPK() {
 	}
@@ -26,7 +26,7 @@ public class TblusuarioPK implements Serializable {
 	public void setCodigoUsuario(int codigoUsuario) {
 		this.codigoUsuario = codigoUsuario;
 	}
-	public int getIdRol() {
+	/*public int getIdRol() {
 		return this.idRol;
 	}
 	public void setIdRol(int idRol) {
@@ -44,13 +44,13 @@ public class TblusuarioPK implements Serializable {
 		return 
 			(this.codigoUsuario == castOther.codigoUsuario)
 			&& (this.idRol == castOther.idRol);
-	}
+	}*/
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.codigoUsuario;
-		hash = hash * prime + this.idRol;
+		//hash = hash * prime + this.idRol;
 		
 		return hash;
 	}

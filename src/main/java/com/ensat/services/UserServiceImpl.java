@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    public void setProductRepository(UserRepository userRepository) {
+    public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
         
     }
@@ -24,6 +24,12 @@ public class UserServiceImpl implements UserService {
     public Iterable<Tblusuario> listAllUsers() {
         return userRepository.findAll();
     }
+
+	@Override
+	public Tblusuario getUserProfileByUserId(int userId) {
+		return userRepository.findOne(userId);
+	}
+    
 /*
     @Override
     public Producto getProductById(Integer id) {
