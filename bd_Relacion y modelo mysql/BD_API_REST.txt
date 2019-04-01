@@ -1,0 +1,38 @@
+
+-- Base de datos: `springbootdb`
+--
+
+--
+-- Estructura de tabla para la tabla `tipo_producto`
+--
+
+CREATE TABLE `tipo_producto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE  `producto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `version` int(11) DEFAULT NULL,
+  `name` varchar(512) COLLATE utf8_unicode_ci NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `tipo_producto_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_producto_tipo_producto_idx` (`tipo_producto_id`),
+  FOREIGN KEY (tipo_producto_id) REFERENCES tipo_producto(id)
+);
+
+-- --------------------------------------------------------
+
+
+
