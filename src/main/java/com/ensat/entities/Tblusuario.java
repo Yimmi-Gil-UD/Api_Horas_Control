@@ -6,26 +6,30 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
 
-
 /**
  * The persistent class for the tblusuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Tblusuario.findAll", query="SELECT t FROM Tblusuario t")
+@NamedQueries({
+		@NamedQuery(name="Tblusuario.findOne", query="FROM Tblusuario U inner join fetch U.tblrol where U.codigoUsuario = :codigo_usuario")
+})
 public class Tblusuario implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name = "codigo_usuario")
+	private Long codigoUsuario;
 
-	@EmbeddedId
-	private TblusuarioPK id;
+//	@EmbeddedId
+//	private TblusuarioPK id;
 
 	private String apellidos;
 
 	@Lob
 	private byte[] clavesegura;
 
-	@Column(name="contador_visitas", nullable = true)
-	private Integer  contador_visitas;
+	@Column(name = "contador_visitas", nullable = true)
+	private Integer contadorVisitas;
 
 	private String correo;
 
@@ -48,8 +52,6 @@ public class Tblusuario implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fechaingreso;
 
-	private int idcargo;
-
 	private BigDecimal identificacion;
 
 	private int idgerente;
@@ -66,7 +68,7 @@ public class Tblusuario implements Serializable {
 
 	private String skype;
 
-	@Column(name="sueldo_costo")
+	@Column(name = "sueldo_costo")
 	private int sueldoCosto;
 
 	private BigDecimal telfijo;
@@ -79,24 +81,31 @@ public class Tblusuario implements Serializable {
 
 	private String tipousuario;
 
-	@Column(name="ultimo_ingreso")
+	@Column(name = "ultimo_ingreso")
 	private Timestamp ultimoIngreso;
 
 	private int usurepbaja;
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "idcargo")
+	private TblCargo cargo;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "fk_idrol", referencedColumnName = "idrol")
+	private Tblrol tblrol;
 
 	public Tblusuario() {
 	}
 
-	public TblusuarioPK getId() {
-		return this.id;
+	public Long getCodigoUsuario() {
+		return codigoUsuario;
 	}
 
-	public void setId(TblusuarioPK id) {
-		this.id = id;
+	public void setCodigoUsuario(Long codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
 	}
 
 	public String getApellidos() {
-		return this.apellidos;
+		return apellidos;
 	}
 
 	public void setApellidos(String apellidos) {
@@ -104,23 +113,23 @@ public class Tblusuario implements Serializable {
 	}
 
 	public byte[] getClavesegura() {
-		return this.clavesegura;
+		return clavesegura;
 	}
 
 	public void setClavesegura(byte[] clavesegura) {
 		this.clavesegura = clavesegura;
 	}
 
-	public int getContadorVisitas() {
-		return this.contador_visitas;
+	public Integer getContadorVisitas() {
+		return contadorVisitas;
 	}
 
 	public void setContadorVisitas(Integer contadorVisitas) {
-		this.contador_visitas = contadorVisitas;
+		this.contadorVisitas = contadorVisitas;
 	}
 
 	public String getCorreo() {
-		return this.correo;
+		return correo;
 	}
 
 	public void setCorreo(String correo) {
@@ -128,7 +137,7 @@ public class Tblusuario implements Serializable {
 	}
 
 	public String getCorreo2() {
-		return this.correo2;
+		return correo2;
 	}
 
 	public void setCorreo2(String correo2) {
@@ -136,23 +145,23 @@ public class Tblusuario implements Serializable {
 	}
 
 	public String getCorreo3() {
-		return this.correo3;
+		return correo3;
 	}
 
 	public void setCorreo3(String correo3) {
 		this.correo3 = correo3;
 	}
 
-	public String getDescripcionBaja() {
-		return this.descripcionbaja;
+	public String getDescripcionbaja() {
+		return descripcionbaja;
 	}
 
-	public void setDescripcionBaja(String descripcionbaja) {
+	public void setDescripcionbaja(String descripcionbaja) {
 		this.descripcionbaja = descripcionbaja;
 	}
 
 	public String getEstado() {
-		return this.estado;
+		return estado;
 	}
 
 	public void setEstado(String estado) {
@@ -160,71 +169,63 @@ public class Tblusuario implements Serializable {
 	}
 
 	public Timestamp getFecha_Registro() {
-		return this.fecha_Registro;
+		return fecha_Registro;
 	}
 
 	public void setFecha_Registro(Timestamp fecha_Registro) {
 		this.fecha_Registro = fecha_Registro;
 	}
 
-	public Timestamp getFechaBaja() {
-		return this.fechabaja;
+	public Timestamp getFechabaja() {
+		return fechabaja;
 	}
 
-	public void setFechaBaja(Timestamp fechaBaja) {
-		this.fechabaja = fechaBaja;
+	public void setFechabaja(Timestamp fechabaja) {
+		this.fechabaja = fechabaja;
 	}
 
-	public Date getFechaCumpleanios() {
-		return this.fechacumpleanios;
+	public Date getFechacumpleanios() {
+		return fechacumpleanios;
 	}
 
-	public void setFechaCumpleanios(Date fechacumpleanios) {
+	public void setFechacumpleanios(Date fechacumpleanios) {
 		this.fechacumpleanios = fechacumpleanios;
 	}
 
-	public Date getFechaIngreso() {
-		return this.fechaingreso;
+	public Date getFechaingreso() {
+		return fechaingreso;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
-		this.fechaingreso = fechaIngreso;
-	}
-
-	public int getIdCargo() {
-		return this.idcargo;
-	}
-
-	public void setIdCargo(int idCargo) {
-		this.idcargo = idCargo;
+	public void setFechaingreso(Date fechaingreso) {
+		this.fechaingreso = fechaingreso;
 	}
 
 	public BigDecimal getIdentificacion() {
-		return this.identificacion;
+		return identificacion;
 	}
 
 	public void setIdentificacion(BigDecimal identificacion) {
 		this.identificacion = identificacion;
 	}
 
-	public int getIdGerente() {
-		return this.idgerente;
+	public int getIdgerente() {
+		return idgerente;
 	}
 
-	public void setIdGerente(int idGerente) {
-		this.idgerente = idGerente;
+	public void setIdgerente(int idgerente) {
+		this.idgerente = idgerente;
 	}
 
-	public int getIdJefe() {
-		return this.idjefe;
+	public int getIdjefe() {
+		return idjefe;
 	}
 
-	public void setIdJefe(int idJefe) {
-		this.idjefe = idJefe;
+	public void setIdjefe(int idjefe) {
+		this.idjefe = idjefe;
 	}
 
 	public String getImagen() {
-		return this.imagen;
+		return imagen;
 	}
 
 	public void setImagen(String imagen) {
@@ -232,23 +233,23 @@ public class Tblusuario implements Serializable {
 	}
 
 	public String getNick() {
-		return this.nick;
+		return nick;
 	}
 
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
 
-	public String getNombreGerente() {
-		return this.nombregerente;
+	public String getNombregerente() {
+		return nombregerente;
 	}
 
-	public void setNombreGerente(String nombreGerente) {
-		this.nombregerente = nombreGerente;
+	public void setNombregerente(String nombregerente) {
+		this.nombregerente = nombregerente;
 	}
 
 	public String getNombres() {
-		return this.nombres;
+		return nombres;
 	}
 
 	public void setNombres(String nombres) {
@@ -256,7 +257,7 @@ public class Tblusuario implements Serializable {
 	}
 
 	public String getSkype() {
-		return this.skype;
+		return skype;
 	}
 
 	public void setSkype(String skype) {
@@ -264,78 +265,83 @@ public class Tblusuario implements Serializable {
 	}
 
 	public int getSueldoCosto() {
-		return this.sueldoCosto;
+		return sueldoCosto;
 	}
 
 	public void setSueldoCosto(int sueldoCosto) {
 		this.sueldoCosto = sueldoCosto;
 	}
 
-	public BigDecimal getTelFijo() {
-		return this.telfijo;
+	public BigDecimal getTelfijo() {
+		return telfijo;
 	}
 
-	public void setTelFijo(BigDecimal telFijo) {
-		this.telfijo = telFijo;
+	public void setTelfijo(BigDecimal telfijo) {
+		this.telfijo = telfijo;
 	}
 
-	public BigDecimal getTelMovil() {
-		return this.telmovil;
+	public BigDecimal getTelmovil() {
+		return telmovil;
 	}
 
-	public void setTelMovil(BigDecimal telMovil) {
-		this.telmovil = telMovil;
+	public void setTelmovil(BigDecimal telmovil) {
+		this.telmovil = telmovil;
 	}
 
-	public BigDecimal getTelOtro() {
-		return this.telotro;
+	public BigDecimal getTelotro() {
+		return telotro;
 	}
 
-	public void setTelOtro(BigDecimal telOtro) {
-		this.telotro = telOtro;
+	public void setTelotro(BigDecimal telotro) {
+		this.telotro = telotro;
 	}
 
 	public String getTipo() {
-		return this.tipo;
+		return tipo;
 	}
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
-	public String getTipoUsuario() {
-		return this.tipousuario;
+	public String getTipousuario() {
+		return tipousuario;
 	}
 
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipousuario = tipoUsuario;
+	public void setTipousuario(String tipousuario) {
+		this.tipousuario = tipousuario;
 	}
 
 	public Timestamp getUltimoIngreso() {
-		return this.ultimoIngreso;
+		return ultimoIngreso;
 	}
 
 	public void setUltimoIngreso(Timestamp ultimoIngreso) {
 		this.ultimoIngreso = ultimoIngreso;
 	}
 
-	public int getUsuRepBaja() {
-		return this.usurepbaja;
+	public int getUsurepbaja() {
+		return usurepbaja;
 	}
 
-	public void setUsuRepBaja(int usuRepBaja) {
-		this.usurepbaja = usuRepBaja;
+	public void setUsurepbaja(int usurepbaja) {
+		this.usurepbaja = usurepbaja;
 	}
 
-	@ManyToOne(optional=false)
-	@JoinColumn(name="fk_idrol", referencedColumnName="idrol")
-	private Tblrol tblrol;
-	
+	public TblCargo getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(TblCargo cargo) {
+		this.cargo = cargo;
+	}
+
 	public Tblrol getTblrol() {
-		return this.tblrol;
+		return tblrol;
 	}
 
 	public void setTblrol(Tblrol tblrol) {
-	this.tblrol = tblrol;
+		this.tblrol = tblrol;
 	}
+
 }

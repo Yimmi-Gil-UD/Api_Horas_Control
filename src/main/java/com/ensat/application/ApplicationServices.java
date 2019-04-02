@@ -1,24 +1,24 @@
 package com.ensat.application;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ensat.DTO.*;
+import com.ensat.DTO.ProfileDTO;
+import com.ensat.DTO.UserDTO;
+import com.ensat.entities.Tblusuario;
 //import com.ensat.entities.Product;
 import com.ensat.services.UserService;
 
 @Service
 public class ApplicationServices implements IApplicationServices {
-
-	private UserService userService;
+	@Autowired
+	UserService userService;
 	
-    @Autowired
-    public void setProductService(UserService userService) {
-        this.userService = userService;
-    }
+	@Autowired
+	ModelMapper mapper;
 	
 	@Override
 	public List<UserDTO> getUsers() {			
@@ -26,8 +26,9 @@ public class ApplicationServices implements IApplicationServices {
 	}
 
 	@Override
-	public ProfileDTO getUserProfileByUserId(int userId) {
-		return DTOAssembler.CreateProfile(userService.getUserProfileByUserId(userId));
+	public ProfileDTO getUserProfileByUserId(Long userId) {
+		Tblusuario usuario = userService.getUserProfileByUserId(userId).get();
+		return mapper.map(usuario, ProfileDTO.class);
 	}
 
 }

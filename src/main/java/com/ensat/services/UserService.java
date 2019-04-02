@@ -1,5 +1,7 @@
 package com.ensat.services;
 
+import java.util.Optional;
+
 //import com.ensat.entities.Product;
 import com.ensat.entities.Tblusuario;
 
@@ -7,5 +9,5 @@ public interface UserService {
 
 	Iterable<Tblusuario> listAllUsers();
 	
-	Tblusuario getUserProfileByUserId(int userId);
+	Optional<Tblusuario> getUserProfileByUserId(Long userId);
 }

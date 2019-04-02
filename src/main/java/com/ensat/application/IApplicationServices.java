@@ -7,5 +7,5 @@ import com.ensat.DTO.*;
 public interface IApplicationServices {
 	List<UserDTO> getUsers();
 	
-	ProfileDTO getUserProfileByUserId(int userId);
+	ProfileDTO getUserProfileByUserId(Long userId);
 }

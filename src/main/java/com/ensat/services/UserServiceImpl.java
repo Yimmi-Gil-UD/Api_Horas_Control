@@ -1,24 +1,23 @@
 package com.ensat.services;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ensat.entities.Tblusuario;
 //import com.ensat.entities.Product;
 import com.ensat.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Product service implement.
  */
 @Service
 public class UserServiceImpl implements UserService {
+	@Autowired
+    UserRepository userRepository;
 
-    private UserRepository userRepository;
-
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-        
-    }
+    
 
     @Override
     public Iterable<Tblusuario> listAllUsers() {
@@ -26,7 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public Tblusuario getUserProfileByUserId(int userId) {
+	public Optional<Tblusuario>  getUserProfileByUserId(Long userId) {
+		
 		return userRepository.findOne(userId);
 	}
     

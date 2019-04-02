@@ -31,7 +31,7 @@ public class DTOAssembler {
 		//userDTO.setId_Usuario(usuario.getCodigo_usuario());
 		userDTO.setNombres(usuario.getNombres());
 		userDTO.setApellidos(usuario.getApellidos());
-		userDTO.setIdCargo(usuario.getIdCargo());
+//		userDTO.setIdCargo(usuario.getIdCargo());
 		/*
 		userDTO.setDescription(product.getTypeproduct().getDescription());
 		userDTO.setNombreProducto(product.getName());
@@ -44,12 +44,12 @@ public class DTOAssembler {
 	public static ProfileDTO CreateProfile(Tblusuario usuario) {
 		ProfileDTO profileDTO = new ProfileDTO();
 		
-		profileDTO.setApellidos(usuario.getApellidos());
-		profileDTO.setNombres(usuario.getNombres());
-		profileDTO.setNickName(usuario.getNick());
-		profileDTO.setIdentification(usuario.getIdentificacion());
-		profileDTO.setManager(usuario.getNombreGerente());
-		profileDTO.setRol(usuario.getTblrol().getNombrerol());
+//		profileDTO.setApellidos(usuario.getApellidos());
+//		profileDTO.setNombres(usuario.getNombres());
+//		profileDTO.setNickName(usuario.getNick());
+//		profileDTO.setIdentification(usuario.getIdentificacion());
+////		profileDTO.setManager(usuario.getNombreGerente());
+//		profileDTO.setRol(usuario.getTblrol().getNombrerol());
 		
 		return profileDTO;
 	}
