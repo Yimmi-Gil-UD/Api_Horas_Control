@@ -6,4 +6,5 @@ import com.ensat.DTO.*;
 
 public interface IApplicationServices {
 	List<UserDTO> getUsers();
+	List<ProjectDTO> getProject();
 }

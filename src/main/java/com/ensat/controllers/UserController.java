@@ -42,7 +42,7 @@ public class UserController {
     public List<UserDTO> getProducts(){
     	return _applicationServices.getProducts();
     }
-//   
+//    	  	
  */
     /* 
     //consultar por id

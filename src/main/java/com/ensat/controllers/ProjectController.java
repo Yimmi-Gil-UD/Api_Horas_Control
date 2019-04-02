@@ -1,6 +1,7 @@
 package com.ensat.controllers;
 
 
+import com.ensat.services.ProjectService;
 //import com.ensat.entities.Product;
 import com.ensat.services.UserService;
 
@@ -20,7 +21,7 @@ import com.ensat.DTO.*;
 @RequestMapping("v1.0/api")
 public class ProjectController {
 
-    private UserService userService;
+    private ProjectService projectService;
     private IApplicationServices _applicationServices;
     
     
@@ -30,8 +31,8 @@ public class ProjectController {
     }
     
     @GetMapping("/getProject")
-    public List<UserDTO> getUser(){
-    	return _applicationServices.getUsers();
+    public List<ProjectDTO> getProject(){
+    	return _applicationServices.getProject();
     }
     
     

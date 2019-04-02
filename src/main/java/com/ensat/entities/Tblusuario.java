@@ -64,6 +64,7 @@ public class Tblusuario implements Serializable {
 
 	private String nombres;
 
+	@Column(name="skype")
 	private String skype;
 
 	@Column(name="sueldo_costo")

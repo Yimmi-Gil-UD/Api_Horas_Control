@@ -1,12 +1,13 @@
 package com.ensat.services;
 
+import com.ensat.entities.Tblproyecto;
 //import com.ensat.entities.Product;
 import com.ensat.entities.Tblusuario;
 
-public interface UserService {
+public interface ProjectService {
 
     //Iterable<Product> listAllProducts();
-	Iterable<Tblusuario> listAllUsers();
+	Iterable<Tblproyecto> listAllProjects();
 	
 
     /*Producto getProductById(Integer id);

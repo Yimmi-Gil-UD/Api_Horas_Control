@@ -9,6 +9,6 @@ import com.ensat.entities.Tblusuario;
 
 public interface UserRepository extends CrudRepository<Tblusuario, Integer> {
 	   
-	@Query(value = "SELECT nombres, apellidos FROM Tblusuario u", nativeQuery = true)
+	@Query(value = "SELECT nombres, apellidos FROM tblusuario u", nativeQuery = true)
 		Iterable<Tblusuario> findAll();
-}
+}	

@@ -10,6 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -33,8 +38,7 @@ public class Tblproyecto implements Serializable {
 	@Column(name="nombre_proyecto")
 	public String nombre_proyecto;
 	
-	@Column(name="id_departamento")
-	public int id_departamento;
+	public int fkIdDepartamento;
 	
 	@Column(name="secuencia_cliente")
 	public String secuencia_cliente;
@@ -42,31 +46,44 @@ public class Tblproyecto implements Serializable {
 	@Column(name="id_gerente")
 	public int id_gerente;
 	
-	@Column(name="fecha_creacion")
+	//@Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fecha_creacion",nullable=true)
 	public Date fecha_creacion;
 	
 	@Column(name="horas_valoradas")
 	public int horas_valoradas;
 	
-	@Column(name="id_uso_creador")
-	public int id_uso_creador;
+	@Column(name="id_usu_creador")
+	public int id_usu_creador;
 	
 	@Column(name="valor")
 	public String valor;
 	
-	@Column(name="fecha_dt")
-	public Date fecha_dt;
+	//@Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fechaDt",nullable=true)
+	public Date fechaDt;
 	
-	@Column(name="fecha_calidad")
-	public Date fecha_calidad;
+	//@Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fechaCalidad",nullable=true)
+	 	public Date fechaCalidad;
 	
-	@Column(name="fecha_produccion")
-	public Date fecha_produccion;
 	
-	@Column(name="fecha_inicio")
+    //@Temporal(TemporalType.DATE)
+	//@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fecha_produccion",nullable=true)
+	public Date fechaProduccion;
+
+    //@Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fecha_inicio",nullable=true)
 	public Date fecha_inicio;
 	
-	@Column(name="fecha_fin")
+   // @Temporal(TemporalType.DATE)
+    //@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(name="fecha_fin",nullable=true)
 	public Date fecha_fin;
 	
 	@Column(name="proyinterno")
@@ -78,16 +95,19 @@ public class Tblproyecto implements Serializable {
 	@Column(name="probabilidad_asignacion")
 	public String probabilidad_asignacion;
 	
-	@Column(name="fk_id_estado")
-	public int fk_id_estado;
+	//@Column(name="fk_id_estado")
+	//public int fk_id_estado;
 	
 	@Column(name="tipo_proyecto")
 	public int tipo_proyecto;
 	
+public Tblproyecto() {
+		
+	}
 	
 	//bi-directional many-to-one association to Tblcliente
 		@ManyToOne
-		@JoinColumn(name="idestado")
+		@JoinColumn(name="fk_id_estado")
 		private Tblestado tblestado;
 		
 		
@@ -117,11 +137,11 @@ public class Tblproyecto implements Serializable {
 	}
 
 	public int getId_departamento() {
-		return id_departamento;
+		return fkIdDepartamento;
 	}
 
-	public void setId_departamento(int id_departamento) {
-		this.id_departamento = id_departamento;
+	public void setId_departamento(int fkIdDepartamento) {
+		this.fkIdDepartamento = fkIdDepartamento;
 	}
 
 	public String getSecuencia_cliente() {
@@ -157,11 +177,11 @@ public class Tblproyecto implements Serializable {
 	}
 
 	public int getId_uso_creador() {
-		return id_uso_creador;
+		return id_usu_creador;
 	}
 
 	public void setId_uso_creador(int id_uso_creador) {
-		this.id_uso_creador = id_uso_creador;
+		this.id_usu_creador = id_uso_creador;
 	}
 
 	public String getValor() {
@@ -173,27 +193,27 @@ public class Tblproyecto implements Serializable {
 	}
 
 	public Date getFecha_dt() {
-		return fecha_dt;
+		return fechaDt;
 	}
 
 	public void setFecha_dt(Date fecha_dt) {
-		this.fecha_dt = fecha_dt;
+		this.fechaDt = fecha_dt;
 	}
 
 	public Date getFecha_calidad() {
-		return fecha_calidad;
+		return fechaCalidad;
 	}
 
-	public void setFecha_calidad(Date fecha_calidad) {
-		this.fecha_calidad = fecha_calidad;
+	public void setFecha_calidad(Date fechaCalidad) {
+		this.fechaCalidad = fechaCalidad;
 	}
 
 	public Date getFecha_produccion() {
-		return fecha_produccion;
+		return fechaProduccion;
 	}
 
-	public void setFecha_produccion(Date fecha_produccion) {
-		this.fecha_produccion = fecha_produccion;
+	public void setFecha_produccion(Date fechaProduccion) {
+		this.fechaProduccion = fechaProduccion;
 	}
 
 	public Date getFecha_inicio() {
@@ -238,13 +258,17 @@ public class Tblproyecto implements Serializable {
 
 	
 
-	public int getFk_id_estado() {
-		return fk_id_estado;
-	}
+	
 
-	public void setFk_id_estado(int fk_id_estado) {
-		this.fk_id_estado = fk_id_estado;
-	}
+	
+
+	//public int getFk_id_estado() {
+		//return fk_id_estado;
+	//}
+
+	//public void setFk_id_estado(int fk_id_estado) {
+	//	this.fk_id_estado = fk_id_estado;
+	//}
 
 	public Tblestado getTblestado() {
 		return tblestado;
@@ -261,12 +285,6 @@ public class Tblproyecto implements Serializable {
 	public void setTipo_proyecto(int tipo_proyecto) {
 		this.tipo_proyecto = tipo_proyecto;
 	}
-	
-	
-public Tblproyecto() {
-		
-	}
-	
 	
 
 }
