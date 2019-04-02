@@ -16,10 +16,8 @@ public class EntityConfig {
 		PropertyMap<Tblusuario, ProfileDTO> mapper = new PropertyMap<Tblusuario, ProfileDTO>() {
 
 			@Override
-			protected void configure() {
-				map().setApellidos(source.getApellidos());				
-				map().setProfileTypeCode(source.getTblrol().getIdrol());
-				skip().setId_Usuario(0);
+			protected void configure() {				
+				map().setCorreo(null);
 			}
 		
 		};

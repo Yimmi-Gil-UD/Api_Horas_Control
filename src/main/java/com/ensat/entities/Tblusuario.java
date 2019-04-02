@@ -12,16 +12,13 @@ import java.sql.Timestamp;
  */
 @Entity
 @NamedQueries({
-		@NamedQuery(name="Tblusuario.findOne", query="FROM Tblusuario U inner join fetch U.tblrol where U.codigoUsuario = :codigo_usuario")
+		@NamedQuery(name="Tblusuario.findOne", query="FROM Tblusuario U inner join fetch U.tblrol inner join fetch U.tblcargo where U.codigoUsuario = :codigo_usuario")
 })
 public class Tblusuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "codigo_usuario")
 	private Long codigoUsuario;
-
-//	@EmbeddedId
-//	private TblusuarioPK id;
 
 	private String apellidos;
 
@@ -84,10 +81,11 @@ public class Tblusuario implements Serializable {
 	@Column(name = "ultimo_ingreso")
 	private Timestamp ultimoIngreso;
 
-	private int usurepbaja;
-	@OneToOne(fetch = FetchType.LAZY, optional = true)
+	private Integer usurepbaja;
+	
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "idcargo")
-	private TblCargo cargo;
+	private Tblcargo tblcargo;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "fk_idrol", referencedColumnName = "idrol")
@@ -320,20 +318,20 @@ public class Tblusuario implements Serializable {
 		this.ultimoIngreso = ultimoIngreso;
 	}
 
-	public int getUsurepbaja() {
+	public Integer getUsurepbaja() {
 		return usurepbaja;
 	}
 
-	public void setUsurepbaja(int usurepbaja) {
+	public void setUsurepbaja(Integer usurepbaja) {
 		this.usurepbaja = usurepbaja;
 	}
 
-	public TblCargo getCargo() {
-		return cargo;
+	public Tblcargo getCargo() {
+		return tblcargo;
 	}
 
-	public void setCargo(TblCargo cargo) {
-		this.cargo = cargo;
+	public void setCargo(Tblcargo tblcargo) {
+		this.tblcargo = tblcargo;
 	}
 
 	public Tblrol getTblrol() {

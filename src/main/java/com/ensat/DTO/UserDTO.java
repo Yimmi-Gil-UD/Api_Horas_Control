@@ -1,14 +1,12 @@
 package com.ensat.DTO;
 
-import java.math.BigDecimal;
-
 public class UserDTO {
 	
 	private int Id_Usuario;
 	private String Nombres;
 	private String Apellidos;
 	private int Id_Cargo;
-	private BigDecimal Identification;
+	private Long Identification;
 	private String Rol;
   
 	public int getId_Usuario() {
@@ -41,10 +39,10 @@ public class UserDTO {
 	public void setId_Cargo(int id_Cargo) {
 		Id_Cargo = id_Cargo;
 	}
-	public BigDecimal getIdentification() {
+	public Long getIdentification() {
 		return Identification;
 	}
-	public void setIdentification(BigDecimal identification) {
+	public void setIdentification(Long identification) {
 		Identification = identification;
 	}
 	public String getRol() {

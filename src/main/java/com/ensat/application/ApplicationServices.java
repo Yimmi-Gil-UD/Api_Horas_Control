@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ensat.DTO.ProfileDTO;
 import com.ensat.DTO.UserDTO;
-import com.ensat.entities.Tblusuario;
 //import com.ensat.entities.Product;
 import com.ensat.services.UserService;
 
@@ -27,8 +26,7 @@ public class ApplicationServices implements IApplicationServices {
 
 	@Override
 	public ProfileDTO getUserProfileByUserId(Long userId) {
-		Tblusuario usuario = userService.getUserProfileByUserId(userId).get();
-		return mapper.map(usuario, ProfileDTO.class);
+		return DTOAssembler.CreateProfile(userService.getUserProfileByUserId(userId).get());
 	}
 
 }

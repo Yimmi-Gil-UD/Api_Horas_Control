@@ -1,21 +1,23 @@
 package com.ensat.entities;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
 @Entity
-public class TblCargo {
+public class Tblcargo {
 
 	@Id
-	@Column(name = "idCargo")
+	@Column(name = "idcargo")
 	private Long id;
 	@Column(name = "nombre")
 	private String nombre;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "cargo", optional=true)
-	private Tblusuario usuario;
+	
+	@OneToMany(mappedBy="tblcargo")
+	private List<Tblusuario> tblusuarios;
 
 	public Long getId() {
 		return id;

@@ -44,12 +44,20 @@ public class DTOAssembler {
 	public static ProfileDTO CreateProfile(Tblusuario usuario) {
 		ProfileDTO profileDTO = new ProfileDTO();
 		
-//		profileDTO.setApellidos(usuario.getApellidos());
-//		profileDTO.setNombres(usuario.getNombres());
-//		profileDTO.setNickName(usuario.getNick());
-//		profileDTO.setIdentification(usuario.getIdentificacion());
-////		profileDTO.setManager(usuario.getNombreGerente());
-//		profileDTO.setRol(usuario.getTblrol().getNombrerol());
+		profileDTO.setIdentification(usuario.getCodigoUsuario());
+		profileDTO.setNombres(usuario.getNombres());
+		profileDTO.setApellidos(usuario.getApellidos());
+		profileDTO.setNick(usuario.getNick());
+		profileDTO.setCorreo(usuario.getCorreo());
+		profileDTO.setEstado(usuario.getEstado());
+		profileDTO.setCargo(usuario.getCargo().getNombre());
+		profileDTO.setCorreo(usuario.getCorreo());
+		profileDTO.setidRol(usuario.getTblrol().getIdrol());
+		profileDTO.setRol(usuario.getTblrol().getNombrerol());
+		profileDTO.setJefeDirect("-------------------");
+		profileDTO.setGerente(usuario.getNombregerente());
+		profileDTO.setFechaIngreso(usuario.getFechaingreso());
+
 		
 		return profileDTO;
 	}
