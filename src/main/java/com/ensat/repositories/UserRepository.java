@@ -14,8 +14,5 @@ import com.ensat.entities.Tblusuario;
 @Repository
 public interface UserRepository extends CrudRepository<Tblusuario, Integer> {
 
-	@Query(value = "SELECT nombres, apellidos FROM Tblusuario u", nativeQuery = true)
-	Iterable<Tblusuario> findAll();
-
 	Optional<Tblusuario> findOne(@Param("codigo_usuario") Long codigo_usuario);
 }
