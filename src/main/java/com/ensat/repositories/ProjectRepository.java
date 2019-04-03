@@ -1,14 +1,15 @@
 package com.ensat.repositories;
 
-import org.springframework.data.jpa.repository.Query;
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-import com.ensat.entities.Tblproyecto;
-import com.ensat.entities.Tblusuario;
+import com.ensat.entities.*;
 
-   
+@Repository
 public interface ProjectRepository extends CrudRepository<Tblproyecto, Integer> {
-	   
-	@Query(value = "SELECT * FROM tblproyecto", nativeQuery = true)
-		Iterable<Tblproyecto> findAll();
+	
+	//Optional<Tblproyecto> findOne(@Param("description") String description);
 }

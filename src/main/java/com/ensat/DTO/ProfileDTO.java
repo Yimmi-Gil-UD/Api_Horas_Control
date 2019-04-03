@@ -2,31 +2,19 @@ package com.ensat.DTO;
 
 import java.util.Date;
 
-import com.ensat.entities.Tblcargo;
-
-public class ProfileDTO extends UserDTO{
+public class ProfileDTO extends UserDTO  {
 	
-	
-	
-	private int identificacion;
 	private String nombres;//cargo 
 	private String apellidos;//nombre gerente
 	private String nick;//
 	private String correo;
 	private String estado;
-	private long cargo;
-	private int rol;
-	private int jefeDirect;
+	private String cargo;
+	private long idrol;
+	private String jefeDirect;
 	private String gerente;
 	private Date fechaIngreso;
 	
-	
-	public int getIdentificacion() {
-		return identificacion;
-	}
-	public void setIdentificacion(int identificacion) {
-		this.identificacion = identificacion;
-	}
 	public String getNombres() {
 		return nombres;
 	}
@@ -57,23 +45,22 @@ public class ProfileDTO extends UserDTO{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public long getCargo() {
+	public String getCargo() {
 		return cargo;
 	}
-	public void setCargo(long cargo) {
+	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	
-	//public int getRol() {
-	//	return rol;
-	//}
-	public void setRol(int rol) {
-		this.rol = rol;
+	public long getidRol() {
+		return idrol;
 	}
-	public int getJefeDirect() {
+	public void setidRol(long rol) {
+		this.idrol = rol;
+	}
+	public String getJefeDirect() {
 		return jefeDirect;
 	}
-	public void setJefeDirect(int jefeDirect) {
+	public void setJefeDirect(String jefeDirect) {
 		this.jefeDirect = jefeDirect;
 	}
 	public String getGerente() {
@@ -88,11 +75,5 @@ public class ProfileDTO extends UserDTO{
 	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	
-	
-	
-	
-	
-
 
 }

@@ -22,11 +22,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "tblproyecto")
 @NamedQuery(name="Tblproyecto.findAll", query="SELECT t FROM Tblproyecto t")
 public class Tblproyecto implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="id_proyecto")
