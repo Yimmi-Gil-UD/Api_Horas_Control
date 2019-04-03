@@ -1,10 +1,8 @@
 package com.ensat.services;
 
 import com.ensat.entities.Tblproyecto;
-import com.ensat.entities.Tblusuario;
 import com.ensat.repositories.ProjectRepository;
 //import com.ensat.entities.Product;
-import com.ensat.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

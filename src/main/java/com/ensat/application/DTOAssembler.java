@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.ensat.DTO.ProjectDTO;
-import com.ensat.DTO.UserDTO;
+import com.ensat.DTO.*;
 import com.ensat.entities.Tblproyecto;
 //import com.ensat.entities.Product;
 import com.ensat.entities.Tblusuario;
@@ -29,10 +28,10 @@ public class DTOAssembler {
 	public static UserDTO CreateUser(Tblusuario usuario) {
 		UserDTO userDTO = new UserDTO();
 		
-		userDTO.setId_Usuario(usuario.getCodigo_usuario().getCodigoUsuario());
+		//userDTO.setId_Usuario(usuario.getCodigo_usuario());
 		userDTO.setNombres(usuario.getNombres());
 		userDTO.setApellidos(usuario.getApellidos());
-		userDTO.setCargo(usuario.getIdCargo());
+//		userDTO.setIdCargo(usuario.getIdCargo());
 		/*
 		userDTO.setDescription(product.getTypeproduct().getDescription());
 		userDTO.setNombreProducto(product.getName());
@@ -41,9 +40,6 @@ public class DTOAssembler {
 		*/
 		return userDTO;
 	}
-	
-	////segundo DTOAssembler
-	
 	
 	public static List<ProjectDTO> CreateProjects(Iterable<Tblproyecto> businessCollections) {
 		List<ProjectDTO> productsDTO = new ArrayList<ProjectDTO>();
@@ -74,14 +70,24 @@ public class DTOAssembler {
 		return projectDTO;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static ProfileDTO CreateProfile(Tblusuario usuario) {
+		ProfileDTO profileDTO = new ProfileDTO();
+		
+		profileDTO.setIdentification(usuario.getIdentificacion());
+		profileDTO.setNombres(usuario.getNombres());
+		profileDTO.setApellidos(usuario.getApellidos());
+		profileDTO.setNick(usuario.getNick());
+		profileDTO.setCorreo(usuario.getCorreo());
+		profileDTO.setEstado(usuario.getEstado());
+		//profileDTO.setCargo(usuario.getCargo().getId());
+		profileDTO.setRol(usuario.getTblrol().getIdrol());
+		profileDTO.setJefeDirect(usuario.getIdjefe());
+		profileDTO.setGerente(usuario.getNombregerente());
+		profileDTO.setFechaIngreso(usuario.getFechaingreso());
+		
+
+		
+		return profileDTO;
+	}
 	
 }
