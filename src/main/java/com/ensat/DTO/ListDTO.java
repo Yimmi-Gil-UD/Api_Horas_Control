@@ -3,7 +3,7 @@ package com.ensat.DTO;
 public class ListDTO {
 	
 	private String Description;
-	private Integer Id;
+	private Long Id;
 	
 	public String getDescription() {
 		return Description;
@@ -11,10 +11,10 @@ public class ListDTO {
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 }

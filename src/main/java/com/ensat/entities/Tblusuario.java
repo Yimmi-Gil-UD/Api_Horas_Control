@@ -6,10 +6,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
 
-/**
- * The persistent class for the tblusuario database table.
- * 
- */
 @Entity
 @NamedQueries({
 		@NamedQuery(name="Tblusuario.findOne", query="FROM Tblusuario U inner join fetch U.tblrol inner join fetch U.tblcargo where U.codigoUsuario = :codigo_usuario")

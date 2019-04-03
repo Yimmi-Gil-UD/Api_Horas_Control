@@ -8,43 +8,43 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
-
 
 @Entity
-@Table(name = "tblproyecto")
-@NamedQuery(name="Tblproyecto.findAll", query="SELECT t FROM Tblproyecto t")
+@NamedQueries({
+	@NamedQuery(name="Tblproyecto.findAll", query="FROM Tblproyecto where nombre_proyecto = :description")
+})
 public class Tblproyecto implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="id_proyecto")
-	public int id_proyecto;
+	public Long id_proyecto;
 	
 	@Column(name="id_cliente")
-	public int id_cliente;
+	public Long id_cliente;
 	
 	@Column(name="nombre_proyecto")
 	public String nombre_proyecto;
 	
-	@Column(name="id_departamento")
-	public int id_departamento;
+	@Column(name="fk_id_departamento")
+	public Long id_departamento;
 	
 	@Column(name="secuencia_cliente")
 	public String secuencia_cliente;
 	
 	@Column(name="id_gerente")
-	public int id_gerente;
+	public Long id_gerente;
 	
-	@Column(name="fecha_creacion")
+	@Column(name="fecha_creacion", nullable=true)
 	public Date fecha_creacion;
 	
 	@Column(name="horas_valoradas")
-	public int horas_valoradas;
+	public Long horas_valoradas;
 	
-	@Column(name="id_uso_creador")
-	public int id_uso_creador;
+	@Column(name="id_usu_creador")
+	public Long id_uso_creador;
 	
 	@Column(name="valor")
 	public String valor;
@@ -52,54 +52,47 @@ public class Tblproyecto implements Serializable {
 	@Column(name="fecha_dt")
 	public Date fecha_dt;
 	
-	@Column(name="fecha_calidad")
+	@Column(name="fecha_calidad", nullable=true)
 	public Date fecha_calidad;
 	
-	@Column(name="fecha_produccion")
+	@Column(name="fecha_produccion", nullable=true)
 	public Date fecha_produccion;
 	
-	@Column(name="fecha_inicio")
+	@Column(name="fecha_inicio", nullable=true)
 	public Date fecha_inicio;
 	
-	@Column(name="fecha_fin")
+	@Column(name="fecha_fin", nullable=true)
 	public Date fecha_fin;
 	
 	@Column(name="proyinterno")
-	public int proyinterno;
+	public Long proyinterno;
 	
 	@Column(name="margen_previsto")
 	public String margen_previsto;
 	
 	@Column(name="probabilidad_asignacion")
 	public String probabilidad_asignacion;
-	
-	@Column(name="fk_id_estado")
-	public int fk_id_estado;
-	
+		
 	@Column(name="tipo_proyecto")
-	public int tipo_proyecto;
-	
-	
-	//bi-directional many-to-one association to Tblcliente
-		@ManyToOne
-		@JoinColumn(name="idestado")
-		private Tblestado tblestado;
+	public Long tipo_proyecto;
 		
-		
+	@ManyToOne
+	@JoinColumn(name="fkIdEstado")
+	private Tblestado tblestado;
 
-	public int getId_proyecto() {
+	public Long getId_proyecto() {
 		return id_proyecto;
 	}
 
-	public void setId_proyecto(int id_proyecto) {
+	public void setId_proyecto(Long id_proyecto) {
 		this.id_proyecto = id_proyecto;
 	}
 
-	public int getId_cliente() {
+	public Long getId_cliente() {
 		return id_cliente;
 	}
 
-	public void setId_cliente(int id_cliente) {
+	public void setId_cliente(Long id_cliente) {
 		this.id_cliente = id_cliente;
 	}
 
@@ -111,11 +104,11 @@ public class Tblproyecto implements Serializable {
 		this.nombre_proyecto = nombre_proyecto;
 	}
 
-	public int getId_departamento() {
+	public Long getId_departamento() {
 		return id_departamento;
 	}
 
-	public void setId_departamento(int id_departamento) {
+	public void setId_departamento(Long id_departamento) {
 		this.id_departamento = id_departamento;
 	}
 
@@ -127,11 +120,11 @@ public class Tblproyecto implements Serializable {
 		this.secuencia_cliente = secuencia_cliente;
 	}
 
-	public int getId_gerente() {
+	public Long getId_gerente() {
 		return id_gerente;
 	}
 
-	public void setId_gerente(int id_gerente) {
+	public void setId_gerente(Long id_gerente) {
 		this.id_gerente = id_gerente;
 	}
 
@@ -143,19 +136,19 @@ public class Tblproyecto implements Serializable {
 		this.fecha_creacion = fecha_creacion;
 	}
 
-	public int getHoras_valoradas() {
+	public Long getHoras_valoradas() {
 		return horas_valoradas;
 	}
 
-	public void setHoras_valoradas(int horas_valoradas) {
+	public void setHoras_valoradas(Long horas_valoradas) {
 		this.horas_valoradas = horas_valoradas;
 	}
 
-	public int getId_uso_creador() {
+	public Long getId_uso_creador() {
 		return id_uso_creador;
 	}
 
-	public void setId_uso_creador(int id_uso_creador) {
+	public void setId_uso_creador(Long id_uso_creador) {
 		this.id_uso_creador = id_uso_creador;
 	}
 
@@ -207,11 +200,11 @@ public class Tblproyecto implements Serializable {
 		this.fecha_fin = fecha_fin;
 	}
 
-	public int getProyinterno() {
+	public Long getProyinterno() {
 		return proyinterno;
 	}
 
-	public void setProyinterno(int proyinterno) {
+	public void setProyinterno(Long proyinterno) {
 		this.proyinterno = proyinterno;
 	}
 
@@ -230,17 +223,7 @@ public class Tblproyecto implements Serializable {
 	public void setProbabilidad_asignacion(String probabilidad_asignacion) {
 		this.probabilidad_asignacion = probabilidad_asignacion;
 	}
-
 	
-
-	public int getFk_id_estado() {
-		return fk_id_estado;
-	}
-
-	public void setFk_id_estado(int fk_id_estado) {
-		this.fk_id_estado = fk_id_estado;
-	}
-
 	public Tblestado getTblestado() {
 		return tblestado;
 	}
@@ -249,11 +232,11 @@ public class Tblproyecto implements Serializable {
 		this.tblestado = tblestado;
 	}
 
-	public int getTipo_proyecto() {
+	public Long getTipo_proyecto() {
 		return tipo_proyecto;
 	}
 
-	public void setTipo_proyecto(int tipo_proyecto) {
+	public void setTipo_proyecto(Long tipo_proyecto) {
 		this.tipo_proyecto = tipo_proyecto;
 	}
 	

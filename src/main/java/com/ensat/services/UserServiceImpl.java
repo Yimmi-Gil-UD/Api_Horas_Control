@@ -17,8 +17,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
     UserRepository userRepository;
 
-    
-
     @Override
     public Iterable<Tblusuario> listAllUsers() {
         return userRepository.findAll();
@@ -26,7 +24,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Optional<Tblusuario>  getUserProfileByUserId(Long userId) {
-		
 		return userRepository.findOne(userId);
 	}
     

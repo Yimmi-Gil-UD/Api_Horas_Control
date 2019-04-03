@@ -20,7 +20,7 @@ public class Tblestado implements Serializable {
 
 	@Id
 	@Column(name="idestado")
-	private int idestado;
+	private Long idestado;
 
 	@Column(name="estado")
 	private String estado;
@@ -28,7 +28,7 @@ public class Tblestado implements Serializable {
 	
 	//bi-directional many-to-one association to Tblproyecto
 	@OneToMany(mappedBy="tblestado")
-		private List<Tblproyecto> tblproyecto;
+	private List<Tblproyecto> tblproyecto;
 	
 
 	public List<Tblproyecto> getTblproyecto() {
@@ -42,11 +42,11 @@ public class Tblestado implements Serializable {
 	public Tblestado() {
 	}
 
-	public int getIdestado() {
+	public Long getIdestado() {
 		return this.idestado;
 	}
 
-	public void setIdestado(int idestado) {
+	public void setIdestado(Long idestado) {
 		this.idestado = idestado;
 	}
 

@@ -18,5 +18,4 @@ public interface UserRepository extends CrudRepository<Tblusuario, Integer> {
 	Iterable<Tblusuario> findAll();
 
 	Optional<Tblusuario> findOne(@Param("codigo_usuario") Long codigo_usuario);
-
 }

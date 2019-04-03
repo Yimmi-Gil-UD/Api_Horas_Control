@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 import com.ensat.DTO.ListDTO;
 import com.ensat.DTO.ProfileDTO;
 import com.ensat.DTO.UserDTO;
-import com.ensat.services.ProjectService;
-//import com.ensat.entities.Product;
-import com.ensat.services.UserService;
+import com.ensat.services.*;
 
 @Service
 public class ApplicationServices implements IApplicationServices {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
 	ProjectService projectService;
 	
 	@Autowired
@@ -34,7 +34,7 @@ public class ApplicationServices implements IApplicationServices {
 	}
 
 	@Override
-	public List<ListDTO> getProjects(String description) {
+	public List<ListDTO> getProjectsByDescription(String description) {
 		return DTOAssembler.CreateLists(projectService.getProjectsByDescription(description));
 	}
 
