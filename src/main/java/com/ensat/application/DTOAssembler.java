@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.ensat.DTO.ListDTO;
 import com.ensat.DTO.ProfileDTO;
 import com.ensat.DTO.UserDTO;
+import com.ensat.entities.Tblproyecto;
 //import com.ensat.entities.Product;
 import com.ensat.entities.Tblusuario;
 
@@ -28,16 +30,9 @@ public class DTOAssembler {
 	public static UserDTO CreateUser(Tblusuario usuario) {
 		UserDTO userDTO = new UserDTO();
 		
-		//userDTO.setId_Usuario(usuario.getCodigo_usuario());
 		userDTO.setNombres(usuario.getNombres());
 		userDTO.setApellidos(usuario.getApellidos());
-//		userDTO.setIdCargo(usuario.getIdCargo());
-		/*
-		userDTO.setDescription(product.getTypeproduct().getDescription());
-		userDTO.setNombreProducto(product.getName());
-		userDTO.setPrice(product.getPrice());
-		userDTO.setId(product.getId());
-		*/
+
 		return userDTO;
 	}
 	
@@ -58,8 +53,30 @@ public class DTOAssembler {
 		profileDTO.setGerente(usuario.getNombregerente());
 		profileDTO.setFechaIngreso(usuario.getFechaingreso());
 
-		
 		return profileDTO;
 	}
 	
+	public static List<ListDTO> CreateLists(Iterable<Tblproyecto> businessCollections){
+		List<ListDTO> listDTO = new ArrayList<ListDTO>();
+        Iterator<Tblproyecto> it = businessCollections.iterator();
+
+        while (it.hasNext()) {
+            //Product product = it.next();
+        	Tblproyecto project = it.next();
+            //productsDTO.add(CreateProduct(product));
+        	listDTO.add(CreateList(project));
+        }
+        
+		return listDTO;
+	}
+	
+	public static ListDTO CreateList(Tblproyecto project) {
+		ListDTO listDTO = new ListDTO();
+		
+		listDTO.setDescription(project.getNombre_proyecto());
+		listDTO.setId(project.getId_proyecto());
+
+		return listDTO;
+	}
+		
 }

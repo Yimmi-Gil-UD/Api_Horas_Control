@@ -8,4 +8,6 @@ public interface IApplicationServices {
 	List<UserDTO> getUsers();
 	
 	ProfileDTO getUserProfileByUserId(Long userId);
+	
+	List<ListDTO> getProjects(String description);
 }
