@@ -5,7 +5,8 @@ import java.util.List;
 import com.ensat.DTO.*;
 
 public interface IApplicationServices {
-	List<UserDTO> getUsers();
+	
+	UserDTO login(UserDTO user);
 	
 	ProfileDTO getUserProfileByUserId(Long userId);
 	

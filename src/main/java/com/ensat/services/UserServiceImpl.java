@@ -18,33 +18,14 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public Iterable<Tblusuario> listAllUsers() {
-        return userRepository.findAll();
+    public Tblusuario login(Tblusuario usuario) {
+    	//, usuario.getClavesegura()
+        return userRepository.findByLoginAndPassword(usuario.getNick());
     }
 
 	@Override
 	public Optional<Tblusuario>  getUserProfileByUserId(Long userId) {
 		return userRepository.findOne(userId);
 	}
-    
-/*
-    @Override
-    public Producto getProductById(Integer id) {
-        return userRepository.findOne(id);
-    }
 
-    public Producto ProductosaveProduct(Producto product) {
-        return userRepository.save(product);
-    }
-
-    @Override
-    public void deleteProduct(Integer id) {
-        userRepository.delete(id);
-    }
-
-	@Override
-	public Producto saveProduct(Producto product) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
 }

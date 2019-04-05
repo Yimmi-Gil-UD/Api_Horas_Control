@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 @Entity
 @NamedQueries({
 		@NamedQuery(name="Tblusuario.findOne", query="FROM Tblusuario U inner join fetch U.tblrol inner join fetch U.tblcargo where U.codigoUsuario = :codigo_usuario")
+	   ,@NamedQuery(name="Tblusuario.findByLoginAndPassword", query="FROM Tblusuario U inner join fetch U.tblcargo where U.nick = :nick")
 })
 public class Tblusuario implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -7,7 +7,8 @@ import com.ensat.entities.Tblusuario;
 
 public interface UserService {
 
-	Iterable<Tblusuario> listAllUsers();
+	Tblusuario login(Tblusuario usuario);
 	
 	Optional<Tblusuario> getUserProfileByUserId(Long userId);
+	
 }

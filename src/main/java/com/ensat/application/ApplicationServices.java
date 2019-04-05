@@ -24,8 +24,8 @@ public class ApplicationServices implements IApplicationServices {
 	ModelMapper mapper;
 	
 	@Override
-	public List<UserDTO> getUsers() {			
-		return DTOAssembler.CreateUsers(userService.listAllUsers());
+	public UserDTO login(UserDTO userDTO) {			
+		return DTOAssembler.CreateUser(userService.login(ModelAssembler.CreateUser(userDTO)));
 	}
 
 	@Override
@@ -37,5 +37,6 @@ public class ApplicationServices implements IApplicationServices {
 	public List<ListDTO> getProjectsByDescription(String description) {
 		return DTOAssembler.CreateLists(projectService.getProjectsByDescription(description));
 	}
+
 
 }

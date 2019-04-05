@@ -2,53 +2,75 @@ package com.ensat.DTO;
 
 public class UserDTO {
 	
-	private int Id_Usuario;
-	private String Nombres;
-	private String Apellidos;
-	private int Id_Cargo;
-	private Long Identification;
+	private Long userId;
+	private String nombres;
+	private String apellidos;
+	private Long cargoId;
+	private Long identificacion;
 	private String Rol;
-  
-	public int getId_Usuario() {
-		return Id_Usuario;
+	private String nickName;
+	private String password;
+	private String email;
+	private String cargo;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setId_Usuario(int id_Usuario) {
-		Id_Usuario = id_Usuario;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getNombres() {
-		return Nombres;
+		return nombres;
 	}
 	public void setNombres(String nombres) {
-		Nombres = nombres;
+		this.nombres = nombres;
 	}
 	public String getApellidos() {
-		return Apellidos;
+		return apellidos;
 	}
 	public void setApellidos(String apellidos) {
-		Apellidos = apellidos;
+		this.apellidos = apellidos;
 	}
-	public int getIdCargo() {
-		return Id_Cargo;
+	public Long getCargoId() {
+		return cargoId;
 	}
-	public void setIdCargo(int cargo) {
-		Id_Cargo = cargo;
+	public void setCargoId(Long cargoId) {
+		this.cargoId = cargoId;
 	}
-	public int getId_Cargo() {
-		return Id_Cargo;
+	public Long getIdentificacion() {
+		return identificacion;
 	}
-	public void setId_Cargo(int id_Cargo) {
-		Id_Cargo = id_Cargo;
-	}
-	public Long getIdentification() {
-		return Identification;
-	}
-	public void setIdentification(Long identification) {
-		Identification = identification;
+	public void setIdentificacion(Long identificacion) {
+		this.identificacion = identificacion;
 	}
 	public String getRol() {
 		return Rol;
 	}
 	public void setRol(String rol) {
 		Rol = rol;
-	}  
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+  
 }
