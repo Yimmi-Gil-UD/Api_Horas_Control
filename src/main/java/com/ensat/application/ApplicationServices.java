@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ensat.DTO.ListDTO;
 import com.ensat.DTO.ProfileDTO;
 import com.ensat.DTO.UserDTO;
+import com.ensat.entities.Tblproyecto;
 import com.ensat.services.*;
 
 @Service
@@ -23,6 +24,8 @@ public class ApplicationServices implements IApplicationServices {
 	@Autowired
 	ModelMapper mapper;
 	
+
+	
 	@Override
 	public UserDTO login(UserDTO userDTO) {			
 		return DTOAssembler.CreateUser(userService.login(ModelAssembler.CreateUser(userDTO)));
@@ -35,8 +38,22 @@ public class ApplicationServices implements IApplicationServices {
 
 	@Override
 	public List<ListDTO> getProjectsByDescription(String description) {
-		return DTOAssembler.CreateLists(projectService.getProjectsByDescription(description));
+		return DTOAssembler.CreateProjects(projectService.getProjectsByDescription(description));
 	}
+
+	@Override
+	public List<ListDTO> getStagesByProjectId(Long projectId) {
+		return DTOAssembler.CreateStages(projectService.getStagesByProjectId(projectId));
+	}
+
+	/*
+	@Override
+	public List<ListProjectDTO> getStageByProjectId(Long ProjectId) {
+		
+		
+	//	return DTOAssembler.CreateListsProject(etapaService.getProjectsById(ProjectId));
+	}
+	*/
 
 
 }

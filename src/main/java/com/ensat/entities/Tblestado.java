@@ -27,17 +27,17 @@ public class Tblestado implements Serializable {
 	
 	
 	//bi-directional many-to-one association to Tblproyecto
-	@OneToMany(mappedBy="tblestado")
-	private List<Tblproyecto> tblproyecto;
+	/*@OneToMany(mappedBy="tblestado")
+	private List<Tblproyecto> tblproyecto;*/
 	
 
-	public List<Tblproyecto> getTblproyecto() {
+	/*public List<Tblproyecto> getTblproyecto() {
 		return tblproyecto;
 	}
 
 	public void setTblproyecto(List<Tblproyecto> tblproyecto) {
 		this.tblproyecto = tblproyecto;
-	}
+	}*/
 
 	public Tblestado() {
 	}

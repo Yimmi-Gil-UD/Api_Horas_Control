@@ -11,9 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Tblproyecto.findAll", query="FROM Tblproyecto where nombre_proyecto = :description")
+	@NamedQuery(name="Tblproyecto.findAll", query="FROM Tblproyecto")
 })
 public class Tblproyecto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -64,9 +67,6 @@ public class Tblproyecto implements Serializable {
 	@Column(name="fecha_fin", nullable=true)
 	public Date fecha_fin;
 	
-	@Column(name="proyinterno")
-	public Long proyinterno;
-	
 	@Column(name="margen_previsto")
 	public String margen_previsto;
 	
@@ -75,10 +75,20 @@ public class Tblproyecto implements Serializable {
 		
 	@Column(name="tipo_proyecto")
 	public Long tipo_proyecto;
-		
+	/*	
 	@ManyToOne
 	@JoinColumn(name="fkIdEstado")
 	private Tblestado tblestado;
+	*/
+	/*
+	@ManyToOne(optional = true)
+	@Fetch(FetchMode.JOIN)
+	@JoinColumn(name = "proyinterno")
+	private Tbletapa tbletapa;
+	*/
+	public Tblproyecto() {
+		
+	}
 
 	public Long getId_proyecto() {
 		return id_proyecto;
@@ -200,14 +210,6 @@ public class Tblproyecto implements Serializable {
 		this.fecha_fin = fecha_fin;
 	}
 
-	public Long getProyinterno() {
-		return proyinterno;
-	}
-
-	public void setProyinterno(Long proyinterno) {
-		this.proyinterno = proyinterno;
-	}
-
 	public String getMargen_previsto() {
 		return margen_previsto;
 	}
@@ -223,14 +225,6 @@ public class Tblproyecto implements Serializable {
 	public void setProbabilidad_asignacion(String probabilidad_asignacion) {
 		this.probabilidad_asignacion = probabilidad_asignacion;
 	}
-	
-	public Tblestado getTblestado() {
-		return tblestado;
-	}
-
-	public void setTblestado(Tblestado tblestado) {
-		this.tblestado = tblestado;
-	}
 
 	public Long getTipo_proyecto() {
 		return tipo_proyecto;
@@ -239,12 +233,12 @@ public class Tblproyecto implements Serializable {
 	public void setTipo_proyecto(Long tipo_proyecto) {
 		this.tipo_proyecto = tipo_proyecto;
 	}
-	
-	
-public Tblproyecto() {
-		
+/*
+	public Tbletapa getTbletapa() {
+		return tbletapa;
 	}
-	
-	
 
+	public void setTbletapa(Tbletapa tbletapa) {
+		this.tbletapa = tbletapa;
+	}*/
 }

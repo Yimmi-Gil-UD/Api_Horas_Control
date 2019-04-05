@@ -13,6 +13,4 @@ public interface UserRepositoryCustom {
 	Optional<Tblusuario> findOne(@Param("codigo_usuario") Long codigo_usuario);
 	
 	Tblusuario findByLoginAndPassword(@Param("nick") String nick);
-	
-	void updatePassword();
 }

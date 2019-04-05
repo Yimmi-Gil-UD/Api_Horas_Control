@@ -5,6 +5,11 @@ public class ProjectDTO {
 	private int Codigo_Proyecto;
 	private String Descripcion;
 	
+	
+	
+	
+	
+	
 	public int getCodigo_Proyecto() {
 		return Codigo_Proyecto;
 	}
