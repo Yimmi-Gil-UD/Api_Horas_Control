@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.ensat.DTO.ListDTO;
-import com.ensat.DTO.ProfileDTO;
-import com.ensat.DTO.UserDTO;
-import com.ensat.entities.Tblproyecto;
-//import com.ensat.entities.Product;
+import com.ensat.DTO.*;
+import com.ensat.entities.*;
 import com.ensat.entities.Tblusuario;
 
 public class DTOAssembler {
@@ -56,7 +53,7 @@ public class DTOAssembler {
 		return profileDTO;
 	}
 	
-	public static List<ListDTO> CreateLists(Iterable<Tblproyecto> businessCollections){
+	public static List<ListDTO> CreateProjects(List<Tblproyecto> businessCollections){
 		List<ListDTO> listDTO = new ArrayList<ListDTO>();
         Iterator<Tblproyecto> it = businessCollections.iterator();
 
@@ -64,13 +61,13 @@ public class DTOAssembler {
             //Product product = it.next();
         	Tblproyecto project = it.next();
             //productsDTO.add(CreateProduct(product));
-        	listDTO.add(CreateList(project));
+        	listDTO.add(CreateProject(project));
         }
         
 		return listDTO;
 	}
 	
-	public static ListDTO CreateList(Tblproyecto project) {
+	public static ListDTO CreateProject(Tblproyecto project) {
 		ListDTO listDTO = new ListDTO();
 		
 		listDTO.setDescription(project.getNombre_proyecto());
@@ -78,5 +75,28 @@ public class DTOAssembler {
 
 		return listDTO;
 	}
+	
+	public static List<ListDTO> CreateStages(Iterable<Tbletapa> bussinesCollection){
+		List<ListDTO> stagesDTO = new ArrayList<ListDTO>();
+        Iterator<Tbletapa> it = bussinesCollection.iterator();
+
+        while (it.hasNext()) {
+            //Product product = it.next();
+        	Tbletapa stage = it.next();
+            //productsDTO.add(CreateProduct(product));
+        	stagesDTO.add(CreateStage(stage));
+        }
+        
+		return stagesDTO;
+	}
+	
+	public static ListDTO CreateStage(Tbletapa stage) {
+		ListDTO stageDTO = new ListDTO();
 		
+		stageDTO.setId(Long.valueOf(stage.getIdetapa()));
+		stageDTO.setDescription(stage.getNombreetapa());
+		
+		return stageDTO;
+	}
+	
 }

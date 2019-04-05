@@ -20,9 +20,20 @@ public class ProjectController {
     @Autowired
     IApplicationServices _applicationServices;
     
-    @GetMapping("/{description}")
+    @GetMapping("/getProjectsByDescription/{description}")
     public List<ListDTO> getProjectsByDescription(@PathVariable(name="description",required=true) String description){
     	return _applicationServices.getProjectsByDescription(description);
+  
+    }
+    
+    @GetMapping("/getStageByProjectId/{projectId}")
+    public List<ListDTO> getStageByProjectId(@PathVariable(name="projectId",required=true) Long projectId){
+    	return _applicationServices.getStagesByProjectId(projectId);
+    }
+    
+    @GetMapping("/Confirming")
+    public String xx(){
+    	return "confirmando api";
     }
     
 }

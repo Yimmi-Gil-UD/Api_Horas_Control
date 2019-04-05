@@ -1,77 +1,53 @@
 package com.ensat.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.*;
 
-/**
- * The persistent class for the tbletapa database table.
- * 
- */
+
 @Entity
-@NamedQuery(name="Tbletapa.findAll", query="SELECT t FROM Tbletapa t")
+@NamedQueries({
+	@NamedQuery(name="Tbletapa.findAll", query="From Tbletapa where etapainterna = :projectId")
+})
 public class Tbletapa implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	private int idEtapa;
-
-	private byte etapainterna;
-
-	private String nombreEtapa;
-
-	//bi-directional many-to-one association to Tblaccionreporte
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idetapa;
+	
+	private String nombreetapa;
+	
+	private Long etapainterna;
+	/*
 	@OneToMany(mappedBy="tbletapa")
-	private List<Tblaccionreporte> tblaccionreportes;
-
+	private List<Tblproyecto> tblproyectos;
+	*/
 	public Tbletapa() {
 	}
 
-	public int getIdEtapa() {
-		return this.idEtapa;
+	public int getIdetapa() {
+		return idetapa;
 	}
 
-	public void setIdEtapa(int idEtapa) {
-		this.idEtapa = idEtapa;
+	public void setIdetapa(int idetapa) {
+		this.idetapa = idetapa;
 	}
 
-	public byte getEtapainterna() {
-		return this.etapainterna;
+	public String getNombreetapa() {
+		return nombreetapa;
 	}
 
-	public void setEtapainterna(byte etapainterna) {
+	public void setNombreetapa(String nombreetapa) {
+		this.nombreetapa = nombreetapa;
+	}
+
+	public Long getEtapainterna() {
+		return etapainterna;
+	}
+
+	public void setEtapainterna(Long etapainterna) {
 		this.etapainterna = etapainterna;
 	}
-
-	public String getNombreEtapa() {
-		return this.nombreEtapa;
-	}
-
-	public void setNombreEtapa(String nombreEtapa) {
-		this.nombreEtapa = nombreEtapa;
-	}
-
-	public List<Tblaccionreporte> getTblaccionreportes() {
-		return this.tblaccionreportes;
-	}
-
-	public void setTblaccionreportes(List<Tblaccionreporte> tblaccionreportes) {
-		this.tblaccionreportes = tblaccionreportes;
-	}
-
-	public Tblaccionreporte addTblaccionreporte(Tblaccionreporte tblaccionreporte) {
-		getTblaccionreportes().add(tblaccionreporte);
-		tblaccionreporte.setTbletapa(this);
-
-		return tblaccionreporte;
-	}
-
-	public Tblaccionreporte removeTblaccionreporte(Tblaccionreporte tblaccionreporte) {
-		getTblaccionreportes().remove(tblaccionreporte);
-		tblaccionreporte.setTbletapa(null);
-
-		return tblaccionreporte;
-	}
-
 }
